@@ -1,0 +1,13 @@
+{
+    "extends": "../tsconfig.base", //extending defaults
+    "compilerOptions": {
+        "removeComments": true,
+        "outFile": "../js/app.js"
+    },
+    "files": [
+        "./app.ts"
+    ]
+    // "include": [
+    //     "./**/*" //searches the nested folders recursively and compiles all file extensions
+    // ]
+}
