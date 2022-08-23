@@ -1,48 +1,18 @@
-class Player {
-    formatName() {
-        return this.name.toUpperCase();
-    }
-}
-function startGame() {
-    let playerName = getInput('playername');
-    logPlayer(playerName);
-    postScore(100, playerName);
-    postScore(-5, playerName);
-}
-function logPlayer(name = "MultiMatch Player") {
-    console.log(`New game starting for player: ${name}`);
-}
-function getInput(elementId) {
-    let input = document.getElementById(elementId);
-    console.log(input.value);
-    return (input.value === '' ? undefined : input.value);
-}
-const logMessage = (message) => console.log(message);
-const logError = (err) => console.log(err);
-function postScore(score, name = "MultiMath Player") {
-    let logger;
-    if (score < 0) {
-        logger = logError;
-    }
-    else {
-        logger = logMessage;
-    }
-    let scoreEl = document.getElementById('display_score');
-    scoreEl.textContent = `${score}-${name}`;
-    logger(`Score: ${score}`);
-}
-document.getElementById('startGame').addEventListener('click', startGame);
-let myResult = {
-    playerName: 'Marie',
-    score: 5,
-    problemCount: 5,
-    factor: 7
-};
-let player = {
-    name: 'Daniel',
-    formatName: () => 'Dan'
-};
-const firstPlayer = new Player();
-firstPlayer.name = "Donny";
-console.log(firstPlayer.formatName());
+"use strict";
+Object.defineProperty(exports, "__esModule", { value: true });
+const player_1 = require("./player");
+const game_1 = require("./game");
+const Helpers = require("./utility");
+let newGame;
+document.getElementById('startGame').addEventListener('click', () => {
+    const player = new player_1.Player();
+    player.name = Helpers.getValue('playername');
+    const problemCount = Number(Helpers.getValue('problemCount'));
+    const factor = Number(Helpers.getValue('factor'));
+    newGame = new game_1.Game(player, problemCount, factor);
+    newGame.displayGame();
+});
+document.getElementById('calculate').addEventListener('click', () => {
+    newGame.calculateScore();
+});
 //# sourceMappingURL=app.js.map
