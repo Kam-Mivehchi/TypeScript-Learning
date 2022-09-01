@@ -1,15 +1,5 @@
-# 🚀 Welcome to your new awesome project!
+# 🚀 Type Script Learning
 
-This project has been created using **webpack-cli**, you can now run
+## Description
 
-```
-npm run build
-```
-
-or
-
-```
-yarn build
-```
-
-to bundle your application
+This is a collection of introductory type script course work I have been using to familiarize myself with the language
